@@ -1,4 +1,1 @@
-# Ocultar el archivo de variables de entorno
-.env
-# Ignorar carpetas de dependencias
 node_modules/

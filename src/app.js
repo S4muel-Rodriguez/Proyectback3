@@ -2,15 +2,25 @@ import express from 'express';
 import dotenv from 'dotenv';
 import connectDB from './config/dbconfig.js';
 import mocksRouter from './routes/mocks.router.js';
+import usersRouter from './routes/users.router.js';
+import petsRouter from './routes/pets.router.js';
 
+// Configuración de variables de entorno
 dotenv.config();
+
+// Inicialización de la aplicación
 const app = express();
 app.use(express.json());
 
-// Connect to DB
+// Conexión a la base de datos
 connectDB();
-// Routes
+
+// Rutas
+app.use('/api/users', usersRouter);
+app.use('/api/pets', petsRouter);
 app.use('/api/mocks', mocksRouter);
 
+// Puerto y servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
