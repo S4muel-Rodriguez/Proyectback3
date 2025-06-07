@@ -4,7 +4,10 @@ import connectDB from './config/dbconfig.js';
 import mocksRouter from './routes/mocks.router.js';
 import usersRouter from './routes/users.router.js';
 import petsRouter from './routes/pets.router.js';
-
+import { setupSwagger } from './config/swagger.js';
+import swaggerDocument from './swagger.json';
+setupSwagger(app);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // Configuración de variables de entorno
 dotenv.config();
 
